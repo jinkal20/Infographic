@@ -1,8 +1,8 @@
 <?php
     $user = "root";
-    $password = "root";
+    $password = "";
     $host = "localhost";
-    $db = "db_mini";
+    $db = "db_infographic";
 
     $conn = mysqli_connect($host, $user, $password, $db);
     mysqli_set_charset($conn, 'utf8');
@@ -12,10 +12,7 @@
     }
     
 
-    if (isset($_GET["carModel"])){
-        $car = $_GET["carModel"];
-
-        $myQuery = "SELECT * FROM mainmodel WHERE model = '$car'";
+        $myQuery = "SELECT * FROM tbl_type ";
 
         $result = mysqli_query($conn, $myQuery);
 
@@ -24,7 +21,7 @@
         while($row = mysqli_fetch_assoc($result)){
             $rows[] = $row;
         }
-    }
+
     //send entire result as a json encode array
     echo json_encode($rows);
 ?>
